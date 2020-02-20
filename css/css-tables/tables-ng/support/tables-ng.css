@@ -1,0 +1,24 @@
+/*
+Tables-ng styling.
+
+Usage:
+
+<p class="testdesc">Short description here
+  Analysis
+<p class="error">Current disagreements between browsers</p>
+*/
+
+body {
+  counter-reset: testid;
+}
+.testdesc {
+  white-space: pre-line;
+  margin-top: 16px;
+}
+.testdesc:before {
+  content: counter(testid) ". ";
+  counter-increment: testid;
+}
+.testdesc:first-line {
+  font-family: monospace;
+}

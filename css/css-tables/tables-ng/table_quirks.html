@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<title>Table quirks</title>
+<script src='/resources/testharness.js'></script>
+<script src='/resources/testharnessreport.js'></script>
+<script src="/resources/check-layout-th.js"></script>
+<script src="../support/table-inspector.js"></script>
+<meta name="flags" content="ahem">
+<link rel="stylesheet" type="text/css" href="../../../fonts/ahem.css" />
+<link rel="author" title="Aleks Totic" href="atotic@chromium.org" />
+<link rel="help" href="https://quirks.spec.whatwg.org/#the-table-cell-width-calculation-quirk" />'
+
+
+<style>
+ table {
+    background: gray;
+    border-spacing: 8px 8px;
+    table-layout: auto;
+  }
+  td {
+    padding: 20px;
+    background: #BFB;
+    font-size: 10px;
+    box-sizing: border-box;
+  }
+  td > div {
+    display: inline-block;
+    background: rgba(56,162,56,0.3);
+  }
+</style>
+
+<h1>Tables in quirks mode</h1>
+
+<p><a href="https://quirks.spec.whatwg.org/#the-table-cell-height-box-sizing-quirk">The table cell height box sizing quirk</a></p>
+<table data-expected-height=116>
+  <tr>
+    <td style="height:100px;box-sizing:content-box" data-expected-height=100>100 height</td>
+  </tr>
+</table>
+<table data-expected-height=116>
+  <tr>
+    <td style="height:100px;box-sizing:border-box" data-expected-height=100>100 height</td>
+  </tr>
+</table>
+
+<p><a href="https://quirks.spec.whatwg.org/#the-table-cell-nowrap-minimum-width-calculation-quirk">The table cell nowrap minimum width calculation quirk</a></p>
+<p>This one fails in Chrome Legacy and NG because Layout() wraps?</p>
+<table>
+  <tr>
+    <td nowrap style="width:50px;font: 20px/1 Ahem" data-expected-width=580>nowrap nowrap nowrap nowrap</td>
+  </tr>
+</table>
+
+<p><a href="https://quirks.spec.whatwg.org/#the-text-decoration-doesnt-propagate-into-tables-quirk">The text decoration doesn’t propagate into tables quirk</a></p>
+NEED TESTING
+
+<p><a href="https://quirks.spec.whatwg.org/#the-collapsing-table-quirk">The collapsing table quirk</a></p>
+NEED TEST
+
+<p><a href="https://quirks.spec.whatwg.org/#the-table-cell-width-calculation-quirk">The table cell width calculation quirk</a></p>
+NEED TEST
+
+<script>
+  checkLayout("table");
+</script>
